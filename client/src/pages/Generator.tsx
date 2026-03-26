@@ -1,7 +1,8 @@
-import { use, useState } from "react"
+import { useState } from "react"
 import Title from "../components/Title"
 import UploadZone from "../components/UploadZone"
-import { RectangleHorizontalIcon, RectangleVerticalIcon } from "lucide-react";
+import { Loader2Icon, RectangleHorizontalIcon, RectangleVerticalIcon, Wand2Icon } from "lucide-react";
+import { PrimaryButton } from "../components/Buttons";
 
 
 const Generator = () => {
@@ -49,7 +50,7 @@ const Generator = () => {
 
                 {/* right col */}
                 <div className="w-full">
-                    <div className="mb-4">
+                    <div className="mb-4 text-gray-300">
                         <label htmlFor="name" className="block text-sm mb-4">Project Name</label>
                         <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name your project" required
                         className="w-full bg-white/3 rounded-lg border-2 p-4 text-sm border-violet-200/10 focus:border-violet-500/50 outline-none transition-all"/>
@@ -77,7 +78,26 @@ const Generator = () => {
                                 ${aspectRatio === '16:9' ? 'ring-violet-500/50 bg-white/10' : ''}`} />
                         </div>
                     </div>
+
+                    <div className="mb-4 text-gray-300">
+                        <label htmlFor="userPrompt" className="block text-sm mb-4">User Prompt <span className="text-xs text-violet-400">(optional)</span></label>
+                        <textarea id="userPrompt" rows={4} value={userPrompt} onChange={(e) => setUserPrompt(e.target.value)} placeholder="Describe how you want the narration to be."
+                            className="w-full bg-white/3 rounded-lg border-2 p-4 text-sm border-violet-200/10 focus:border-violet-500/50 outline-none resize-none transition-all"/>
+                    </div>
                 </div>
+            </div>
+
+            <div className="flex justify-center mt-10">
+                <PrimaryButton disabled={isGenerating} className="px-10 py-3 rounded-md disabled:opacity-70 disabled:cursor-not-allowed">
+                    {isGenerating ? (
+                        <>
+                            <Loader2Icon className="size-5 animate-spin"/> Generating...
+                        </>
+                        ) : (
+                        <>
+                            <Wand2Icon className="size-5" /> Generate Image
+                        </>)}
+                </PrimaryButton>
             </div>
         </form>
     </div>
