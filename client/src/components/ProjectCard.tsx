@@ -2,7 +2,7 @@ import type React from "react"
 import type { Project } from "../types"
 import { useState, type SetStateAction } from "react"
 import { useNavigate } from "react-router-dom"
-import { Loader2Icon } from "lucide-react"
+import { EllipsisIcon, Loader2Icon } from "lucide-react"
 
 
 
@@ -54,6 +54,20 @@ const ProjectCard = ({ gen, setGenerations, forCommunity = false } :
                         )
                     }
                 </div>
+
+                {/* action menu for my generations only */}
+                {
+                    !forCommunity && (
+                        <div className="absolute right-3 top-3 sm:opacity-0 group-hover:opacity-100 transition flex items-center gap-2">
+                            <div className="absolute top-3 right-3">
+                                <EllipsisIcon className="ml-auto bg-black/20 rounded-full -1 size-7"/>
+                            </div>
+                            <div className="flex flex-col items-end w-32 text-sm">
+                                <ul></ul>
+                            </div>
+                        </div>
+                    )
+                }
 
                 {/* source images */}
                 <div className="absolute right-3 bottom-3">

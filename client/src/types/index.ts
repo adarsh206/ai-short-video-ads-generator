@@ -1,4 +1,5 @@
 import type React from "react";
+import type { JSX } from "react/jsx-runtime";
 
 export interface UploadZoneProps {
     label : string;
@@ -16,6 +17,7 @@ export interface User {
 
 
 export interface Project {
+    map(arg0: (gen: any) => JSX.Element): React.ReactNode;
     id : string;
     name?: string;
     userId?: string;
