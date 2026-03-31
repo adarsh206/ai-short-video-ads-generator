@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import type { Project } from "../types"
 import { dummyGenerations } from "../assets/assets";
-import { Loader2Icon, RefreshCwIcon } from "lucide-react";
+import { ImageIcon, Loader2Icon, RefreshCwIcon, VideoIcon } from "lucide-react";
 import { Link } from "react-router-dom";
+import { GhostButton } from "../components/Buttons";
 
 
 const Result = () => {
@@ -43,7 +44,7 @@ const Result = () => {
           {/* Main Result Display */}
           <div className="lg:col-span-2 space-y-6">
             <div className="glass-panel inline-block p-2 rounded-2xl">
-              <div>
+              <div className={`${project?.aspectRatio === '9:16' ? 'aspect-9/16' : 'aspect-video'}`}>
                 {
                   project?.generatedVideo ? (
                     <video src={project.generatedVideo} controls autoPlay loop className="w-full h-full object-cover"/>
@@ -56,8 +57,34 @@ const Result = () => {
           </div>
 
           {/* Sidebar Actions */}
-          <div>
+          <div className="space-y-6">
+              {/* download buttons   */}
+              <div className="glass-panel p-6 rounded-2xl">
+                <h3 className="text-xl font-semibold mb-4">Actions</h3>
+                <div className="flex flex-col gap-3">
+                  <a href={project.generatedImage} download>
+                    <GhostButton disabled={!project.generatedImage} className="w-full justify-center rounded-md py-3 disabled:opacity-50 disabled:cursor-not-allowed">
+                      <ImageIcon className="size-4.5"/>
+                      Download Image
+                    </GhostButton>
+                  </a>
+                  <a href={project.generatedVideo} download>
+                    <GhostButton disabled={!project.generatedVideo} className="w-full justify-center rounded-md py-3 disabled:opacity-50 disabled:cursor-not-allowed">
+                      <VideoIcon className="size-4.5"/>
+                      Download Video
+                    </GhostButton>
+                  </a>
+                </div>
+              </div>
 
+               {/* generate video buttons   */}
+              <div className="glass-panel p-6 rounded-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                  <VideoIcon className="size-24"/>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Video Magic</h3>
+                <p className="text-gray-400 text-sm mb-6">Turn this static image into a dynamic video for social media.</p>
+              </div>
           </div>
         </div>
       </div>
