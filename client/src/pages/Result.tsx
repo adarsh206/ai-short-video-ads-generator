@@ -10,7 +10,7 @@ const Result = () => {
 
   const [project, setProjectData] = useState<Project>({} as Project);
   const [loading, setLoading] = useState(true);
-  const [isGenerating, setIsGenerating] = useState(true);
+  const [isGenerating, setIsGenerating] = useState(false);
   
 
   const fetchProjectData = async () => {
@@ -91,8 +91,14 @@ const Result = () => {
                 {
                   !project.generatedVideo ? (
                     <PrimaryButton disabled={isGenerating} onClick={handleGenerateVideo} className="w-full">
-                      <SparkleIcon className="size-4"/>
-                      Generate Video
+                      {
+                        isGenerating ? (
+                          <>Generating Video...</>
+                        ) : (
+                          <><SparkleIcon className="size-4"/> Generate Video</>
+                        )
+                      }
+                      
                     </PrimaryButton>
                   ) : (
                     <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 text-center text-sm font-medium">
