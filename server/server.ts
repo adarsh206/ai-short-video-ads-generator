@@ -1,15 +1,20 @@
+import "./configs/instrument.mjs"
 import "dotenv/config";
 import express, { Request, Response } from 'express';
 import cors from 'cors'
 import { clerkMiddleware } from '@clerk/express'
 import clerkWebhooks from "./controllers/clerk.js";
+import * as Sentry from "@sentry/node"
 
 const app = express();
 
 // Middleware
 app.use(cors());
 
-app.post('/api/clerk', express.raw({ type: 'application/json' }), clerkWebhooks);
+// every time vscode closed and again reopened it will create a new address for webhooks so please add that address from ports section in clerk webhook. 
+// it only happens when it is not hosted on any permanent address
+app.post('/api/clerk', express.raw({ type: 'application/json' }), clerkWebhooks); 
+
 
 app.use(express.json());
 app.use(clerkMiddleware())
@@ -20,7 +25,12 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Server is Live!');
 });
 
+app.get("/debug-sentry", function mainHandler(req, res) {
+  throw new Error("My first Sentry error!");
+});
 
+// The error handler must be registered before any other error middleware and after all controllers
+Sentry.setupExpressErrorHandler(app);
 
 
 app.listen(PORT, () => {
