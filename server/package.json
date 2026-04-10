@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@clerk/express": "^2.0.8",
+    "@google/genai": "^1.49.0",
     "@prisma/adapter-pg": "^7.6.0",
     "@prisma/client": "^7.6.0",
     "@sentry/node": "^10.47.0",

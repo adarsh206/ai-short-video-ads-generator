@@ -2,7 +2,18 @@ import { Request, Response } from 'express'
 import * as Sentry from "@sentry/node"
 import { prisma } from '../configs/prisma.js';
 import { v2 as cloudinary } from 'cloudinary';
+import { GenerateContentConfig, HarmBlockThreshold, HarmCategory } from '@google/genai'
+import fs from 'fs';
+import path from 'path';
 
+const loadImage = (path: string, mimeType: string) => {
+    return {
+        inlineData: {
+            data: fs.readFileSync(path).toString('base64'),
+            mimeType
+        }
+    }
+}
 
 // create project controller
 export const createProject = async (req: Request, res : Response) => {
@@ -60,6 +71,39 @@ export const createProject = async (req: Request, res : Response) => {
         })
 
         tempProjectId = project.id;
+
+        const model = 'gemini-3-pro-flash-image';
+
+        const generationConfig: GenerateContentConfig = {
+            maxOutputTokens: 32768,
+            temperature: 1,
+            topP: 0.95,
+            responseModalities: ['IMAGE'],
+            imageConfig: {
+                aspectRatio: aspectRatio || '9:16',
+                imageSize: '1K'
+            },
+            safetySettings: [
+                {
+                    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+                    threshold: HarmBlockThreshold.OFF,
+                },
+                {
+                    category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+                    threshold: HarmBlockThreshold.OFF,
+                },
+                {
+                    category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+                    threshold: HarmBlockThreshold.OFF,
+                },
+                {
+                    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+                    threshold: HarmBlockThreshold.OFF,
+                },
+            ]
+        }
+
+
     } catch (error: any) {
         Sentry.captureException(error)
         res.status(500).json({ message : error.message })
