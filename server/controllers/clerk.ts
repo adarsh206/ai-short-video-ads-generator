@@ -28,7 +28,7 @@ const clerkWebhooks = async (req: Request, res: Response) => {
             case "user.updated": {
                 await prisma.user.update({
                     where: {
-                        id : data.id
+                        id: data.id
                     },
                     data: {
                         email: data?.email_addresses[0]?.email_address,
@@ -40,7 +40,7 @@ const clerkWebhooks = async (req: Request, res: Response) => {
             }
 
             case "user.deleted": {
-                await prisma.user.delete({ where: { id : data.id } })
+                await prisma.user.delete({ where: { id: data.id } })
                 break;
             }
 
