@@ -1,19 +1,23 @@
 import { Request, Response } from "express"
 import * as Sentry from "@sentry/node"
 import { prisma } from "../configs/prisma.js";
+import { getAuth } from "@clerk/express";
 
 // Get User Credits
 export const getUserCredits = async (req: Request, res: Response) => {
 
     try {
-        const { userId } = req.auth();
-        
+        // const { userId } = req.auth();
 
+        const { userId } = getAuth(req);
+      
+       
+        console.log("USER ID:", userId)
         if (!userId) {
             return res.status(401).json({ message: 'Unauthorized'});
         }
 
-        const user = await prisma.user.findUnique({
+        const user = await prisma.user.findUnique({ 
             where: { id: userId }
         });
         console.log(user)

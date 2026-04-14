@@ -1,17 +1,24 @@
 import { Request, Response, NextFunction } from 'express'
 import * as Sentry from "@sentry/node"
+import { getAuth } from '@clerk/express';
 
 
 export const protect = async (req: Request, res: Response, next: NextFunction) => {
 
     try {
         
-        const { userId } = req.auth();
+        // const { userId } = req.auth();
+       
+        const { userId } = getAuth(req);
+
+        console.log("🛡️ USER ID:", userId);
 
         if(!userId){
             return res.status(401).json({ message : 'Unauthorized'})
         }
-        next()
+        
+        next();
+
     } catch (error : any) {
         Sentry.captureException(error)
         res.status(401).json({ message : error.code || error.message })

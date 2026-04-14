@@ -19,17 +19,21 @@ app.post('/api/clerk', express.raw({ type: 'application/json' }), clerkWebhooks)
 
 
 app.use(express.json());
-app.use(clerkMiddleware())
+app.use(clerkMiddleware());
 
-const PORT = process.env.PORT || 5000;
+
+const PORT = process.env.PORT || 6000;
+
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Server is Live!');
 });
 
-app.get("/debug-sentry", function mainHandler(req, res) {
-  throw new Error("My first Sentry error!");
-});
+
+
+// app.get("/debug-sentry", function mainHandler(req, res) {
+//   throw new Error("My first Sentry error!");
+// });
 
 app.use('/api/user', userRouter);
 app.use('/api/project', projectRouter);

@@ -34,7 +34,8 @@ export default function Navbar() {
             
             if (!token) throw new Error('Failed to get auth token');
             
-            console.log("STEP 3: Calling API");
+            console.log("STEP 3: Calling API"); 
+            
             const { data } = await api.get('/api/user/credits', {headers: 
                 {Authorization: `Bearer ${token}`}});
 
@@ -48,7 +49,7 @@ export default function Navbar() {
 
     useEffect(() => {
         if(user) {
-            getUserCredits();     
+            (async () => await getUserCredits())();  
         }
     }, [user, pathname])
 
