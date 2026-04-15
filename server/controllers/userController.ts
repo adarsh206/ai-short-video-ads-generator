@@ -11,8 +11,6 @@ export const getUserCredits = async (req: Request, res: Response) => {
 
         const { userId } = getAuth(req);
       
-       
-        console.log("USER ID:", userId)
         if (!userId) {
             return res.status(401).json({ message: 'Unauthorized'});
         }
@@ -20,7 +18,7 @@ export const getUserCredits = async (req: Request, res: Response) => {
         const user = await prisma.user.findUnique({ 
             where: { id: userId }
         });
-        console.log(user)
+
 
 
         if (!user) {

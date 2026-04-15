@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(clerkMiddleware());
 
 
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 5005;
 
 
 app.get('/', (req: Request, res: Response) => {
@@ -31,9 +31,9 @@ app.get('/', (req: Request, res: Response) => {
 
 
 
-// app.get("/debug-sentry", function mainHandler(req, res) {
-//   throw new Error("My first Sentry error!");
-// });
+app.get("/debug-sentry", function mainHandler(req, res) {
+  throw new Error("My first Sentry error!");
+});
 
 app.use('/api/user', userRouter);
 app.use('/api/project', projectRouter);

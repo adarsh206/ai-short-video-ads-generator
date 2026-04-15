@@ -11,8 +11,6 @@ export const protect = async (req: Request, res: Response, next: NextFunction) =
        
         const { userId } = getAuth(req);
 
-        console.log("🛡️ USER ID:", userId);
-
         if(!userId){
             return res.status(401).json({ message : 'Unauthorized'})
         }
