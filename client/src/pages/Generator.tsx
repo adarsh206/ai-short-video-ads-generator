@@ -42,7 +42,7 @@ const Generator = () => {
         if(!user){
             return toast('Please login to generate')
         }
-        if(!productImage || !modelImage || !name || !productName || aspectRatio){
+        if(!productImage || !modelImage || !name || !productName || !aspectRatio){
             return toast('Please fill all the required fields')
         }
 

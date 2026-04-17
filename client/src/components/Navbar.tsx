@@ -15,7 +15,7 @@ export default function Navbar() {
     const {openSignIn, openSignUp} = useClerk()
     const [isOpen, setIsOpen] = useState(false);
 
-    const [credits, setCredits] = useState(0);
+    const [credits, setCredits] = useState(20);
     const { pathname } = useLocation();
     const { getToken } = useAuth();
 

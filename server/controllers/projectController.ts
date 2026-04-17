@@ -8,6 +8,7 @@ import path from 'path';
 import ai from '../configs/ai.js';
 import axios from 'axios';
 import { resolve } from 'dns';
+import { getAuth } from '@clerk/express';
 
 const loadImage = (path: string, mimeType: string) => {
     return {
@@ -22,7 +23,14 @@ const loadImage = (path: string, mimeType: string) => {
 export const createProject = async (req: Request, res : Response) => {
     
         let tempProjectId: string;
-        const { userId } = req.auth();
+       
+        // const { userId } = req.auth();
+        const { userId } = getAuth(req);
+
+        if (!userId) {
+            return res.status(401).json({ message: "Unauthorized" })
+        }
+
         let isCreditDeducted = false;
 
         const { name = 'New Project', aspectRatio, userPrompt, productName, productDescription, targetLength = 5} = req.body;
