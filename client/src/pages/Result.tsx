@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import type { Project } from "../types"
 // import { dummyGenerations } from "../assets/assets";
 import { ImageIcon, Loader2Icon, RefreshCwIcon, SparkleIcon, VideoIcon } from "lucide-react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { GhostButton, PrimaryButton } from "../components/Buttons";
 import { useAuth, useUser } from "@clerk/react";
 import api from "../configs/axios";

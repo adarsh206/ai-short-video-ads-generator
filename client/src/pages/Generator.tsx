@@ -59,7 +59,8 @@ const Generator = () => {
             formData.append('images', modelImage);
 
             const token = await getToken();
-
+            console.log([...formData.entries()])
+            
             const { data } = await api.post('/api/project/create', formData, {
                 headers: {Authorization: `Bearer ${token}`}
             })

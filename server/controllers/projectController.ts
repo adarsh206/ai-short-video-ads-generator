@@ -35,10 +35,14 @@ export const createProject = async (req: Request, res : Response) => {
 
         const { name = 'New Project', aspectRatio, userPrompt, productName, productDescription, targetLength = 5} = req.body;
 
-        const images : any = req.files;
+        const images: any[] = Array.isArray(req.files) ? req.files : [];
 
-        if(images.length < 2 || !productName){
-            return res.status(400).json({ message: "Please upload at least 2 images"})
+        if (images.length < 2) {
+            return res.status(400).json({ message: 'Please upload at least 2 images' })
+        }
+
+        if (!productName) {
+            return res.status(400).json({ message: 'Please provide a product name' })
         }
 
         const user = await prisma.user.findUnique({
@@ -167,7 +171,7 @@ export const createProject = async (req: Request, res : Response) => {
                 }
             })
 
-            res.json({projectId: project.id})
+            res.json({ message: 'Project created', projectId: project.id })
 
     } catch (error: any) {
         if(tempProjectId!){
