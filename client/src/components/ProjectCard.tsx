@@ -37,7 +37,20 @@ const ProjectCard = ({ gen, setGenerations, forCommunity = false } :
   }
 
    const togglePublish = async (projectId : string) => {
-    console.log(projectId)
+    try {
+        const token = await getToken();
+
+        const { data } = await api.get(`/api/user/publish/${projectId}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+
+        setGenerations((generations)=>generations.map((gen)=>gen.id === projectId ? {...gen, isPublished: data.isPublished} : gen));
+        toast.success(data.isPublished ? 'Project published' : 'Project unpublished');
+
+    } catch (error: any) {
+        toast.error(error?.response?.data?.message || error.message);
+        console.log(error);
+    }
   }
   
   return (
