@@ -24,7 +24,7 @@ const Result = () => {
 
   const fetchProjectData = async () => {
     // setTimeout(() => {
-    //   setProjectData(dummyGenerations[0]);
+    //   setProjectData(dummyGenerations[1]);
     //   setLoading(false)
     // }, 3000)
 
