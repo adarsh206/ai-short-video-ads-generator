@@ -32,6 +32,38 @@ This platform addresses the growing demand for authentic, engaging content in di
 - **Credit System**: Pay-per-use model with transparent credit consumption (5 credits for images, 10 for videos)
 - **Community Sharing**: Users can publish creations to a public gallery for inspiration
 
+### **Images**
+<img width="1920" height="3877" alt="Image" src="https://github.com/user-attachments/assets/41b77eec-9efa-4151-b7b8-62c90abbbf17" />
+
+<img width="1920" height="1586" alt="Image" src="https://github.com/user-attachments/assets/d3f1bfd9-9d27-4bce-95c2-b13fa0e857e2" />
+
+<img width="1920" height="1245" alt="Image" src="https://github.com/user-attachments/assets/0c048d1b-45db-409e-802e-ee7ed268d23d" />
+<img width="1920" height="2865" alt="Image" src="https://github.com/user-attachments/assets/9c9811b0-ae8c-4034-b02f-93df813c9975" />
+
+<img width="1920" height="3021" alt="Image" src="https://github.com/user-attachments/assets/fb6b5194-1b90-49ab-ac72-b70c834fe03d" />
+
+<img width="1920" height="3877" alt="Image" src="https://github.com/user-attachments/assets/536a934e-9ee5-49b9-b0a7-9942e2a102b5" />
+
+<img width="1920" height="1868" alt="Image" src="https://github.com/user-attachments/assets/7598a926-a75b-4dc7-9aac-79ed794f4319" />
+
+<img width="1920" height="1301" alt="Image" src="https://github.com/user-attachments/assets/8eeb24af-d0a0-489c-9aca-c4119c451235" />
+
+<img width="371" height="4500" alt="Image" src="https://github.com/user-attachments/assets/1d8fdd60-3f05-41ee-97c7-433bbb852b7d" />
+
+<img width="371" height="2148" alt="Image" src="https://github.com/user-attachments/assets/3fc68712-ff4e-4b2f-90a5-1cb82358e433" />
+
+<img width="371" height="5250" alt="Image" src="https://github.com/user-attachments/assets/3fa7f88f-fe90-4caa-a15e-baa5cdaf5f57" />
+
+<img width="371" height="1867" alt="Image" src="https://github.com/user-attachments/assets/2148fac8-b5b3-408c-b490-e23a383ad7cc" />
+
+<img width="371" height="5625" alt="Image" src="https://github.com/user-attachments/assets/021c3322-03de-4998-89aa-fa60347a2c06" />
+
+<img width="371" height="4500" alt="Image" src="https://github.com/user-attachments/assets/4310e306-185b-4b70-80c4-3876b27ae9df" />
+
+<img width="371" height="1578" alt="Image" src="https://github.com/user-attachments/assets/a695dcf3-cce3-46ce-9c11-834f51ad9300" />
+
+<img width="371" height="1312" alt="Image" src="https://github.com/user-attachments/assets/808540a9-16a7-4a53-b766-f165c630b424" />
+
 ### **Key Features & Capabilities**
 
 #### **🎨 AI-Powered Content Generation**
